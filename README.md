@@ -5,8 +5,9 @@ Basic class to access RFID readers of the type [MFRC522](http://www.nxp.com/docu
 This is basically a re-write of [this](https://github.com/mxgxw/MFRC522-python) Python port for the MFRC522. I 
 tried to strip things down and make them more "pythonic" so the result is small enough to run on 
 [Micropython](https://github.com/micropython/micropython) boards. I tried the class so far on the 
-[ESP8266](https://github.com/micropython/micropython/tree/master/esp8266) and 
-the [WiPy](https://github.com/micropython/micropython/tree/master/cc3200). 
+[ESP8266](https://github.com/micropython/micropython/tree/master/ports/esp8266), the
+[ESP32](https://github.com/micropython/micropython/tree/master/ports/esp32) and 
+the [WiPy](https://github.com/micropython/micropython/tree/master/ports/cc3200). 
 
 ## Usage
 
@@ -16,13 +17,13 @@ For the ESP8266 there are multiple solutions to do that. E.g. use the
  
 I used the following pins for my setup:
 
-| Signal    | GPIO ESP8266 | GPIO WiPy      | Note                                 |
-| --------- | ------------ | -------------- | ------------------------------------ |
-| sck       | 0            | "GP14"         |                                      |
-| mosi      | 2            | "GP16"         |                                      |
-| miso      | 4            | "GP15"         |                                      |
-| rst       | 5            | "GP22"         |                                      |
-| cs        | 14           | "GP14"         |Labeled SDA on most RFID-RC522 boards |
+| Signal    | GPIO ESP8266 | GPIO ESP32 (HSPI) | GPIO WiPy      | Note                                 |
+| --------- | ------------ | ----------------- | -------------- | ------------------------------------ |
+| sck       | 0            | 14                | "GP14"         |                                      |
+| mosi      | 2            | 13                | "GP16"         |                                      |
+| miso      | 4            | 12                | "GP15"         |                                      |
+| rst       | 5            | 27                | "GP22"         |                                      |
+| cs        | 14           | 15                | "GP14"         |Labeled SDA on most RFID-RC522 boards |
  
 Now enter the REPL you could run one of the two exmaples: 
 
